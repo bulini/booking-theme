@@ -81,6 +81,19 @@ $options=load_theme_options();
 							<!-- /COUNTRY ITEM-->
 					<!-- /ITEM-->
 					<?php endwhile; ?>
+					
+					
+					<div class="row margin-top-10 white">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+							<h1>Appartamenti <?php single_cat_title(); ?> <?php echo $options['city']; ?></h1>
+							<p>Invia una richiesta multipla a tutte le strutture presenti su questa pagina, specifica le tue esigenze, se &egrave; una vacanza di gruppo, pi&ugrave; famiglie, bambini etc.</p>
+							<p class="text-center">
+								<a class="btn btn-lg btn-primary" data-toggle="modal" data-target="#myModal">Inviaci una richiesta informazioni multipla</a>									
+							</p>
+
+						</div>
+					</div>
+					
 		
 		
 		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
