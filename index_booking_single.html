@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.png">
+
+    <title>Carousel Template for Bootstrap</title>
+	<!-- Flexslider styles-->
+	<link href="assets/css/flexslider.css" rel="stylesheet">
+    <!-- Bootstrap custom theme core CSS styles -->
+	<link href="css/theme.css" rel="stylesheet">
+    
+	<style>
+		body{
+			padding-top:70px;
+		}
+		.margin-top-10{
+			margin-top:10px;
+		}
+		.gradient-bg{
+			
+			-webkit-box-shadow:  21px -14px 50px rgba(150, 150, 150, 0.05) inset;
+			-moz-box-shadow:     21px -14px 50px rgba(150, 150, 150, 0.05) inset;
+			box-shadow:          21px -14px 50px rgba(150, 150, 150, 0.05) inset;
+
+			border-left:2px solid #DEDEDE;
+			border-top:none;
+			border-left:none;
+			border-bottom:none;
+			border-width:2px;
+			-webkit-border-image: 
+				-webkit-gradient(linear, 0 100%, 0 0, from(rgba(0, 0, 0, .1)), to(rgba(0, 0, 0, 0))) 1 100%;
+			-webkit-border-image: 
+				-webkit-linear-gradient(bottom, rgba(0, 0, 0, .1), rgba(0, 0, 0, 0)) 1 100%;
+			-o-border-image:
+					 -o-linear-gradient(bottom, rgba(0, 0, 0, .1), rgba(0, 0, 0, 0)) 1 100%;
+			-moz-border-image:
+				   -moz-linear-gradient(bottom, rgba(0, 0, 0, .1), rgba(0, 0, 0, 0)) 1 100%; 
+		}
+	
+		.hov-action-border{
+			border: 2px solid transparent;
+		}
+		.hov-action-border:hover{
+			border: 2px solid #ffde9f;
+		}
+		/* Remove standart style from .alert placed in .panel*/
+		.panel .alert{
+			padding:0px;
+			-webkit-box-shadow:none;
+				-moz-box-shadow:none;
+					box-shadow:none;
+		}
+		
+		
+		.block-wrapper{
+			position:relative;
+			display:inline-block;
+			width:100%;
+			height:auto;
+		}
+		.map-wrapper{
+			position:absolute;
+			top:0px;
+			left:0px;
+			
+			display:inline-block;
+		}
+		/* gMap */
+		 #map.gmappanel {
+		width:100%;
+		position:relative;
+		height:0px;
+		
+	 }
+	 #map.gmappanel.hide-map{
+		height:0px;
+			z-index:1020;
+			position:absolute;
+			top:0px;
+			bottom:0px;
+			left:0px;
+	 }
+	  #map.gmappanel.show-map{
+			display:block;
+			z-index:1020;
+			position:absolute;
+			top:0px;
+			bottom:0px;
+			left:0px;
+			height:500px;
+			
+	  }
+	  .toggler-hide{
+		display:none;
+	  }
+	 
+	 
+	</style>
+	
+		<link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+	
+<!--[if lt IE 7]>
+	<link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome-ie7.min.css" rel="stylesheet">
+	<![endif]-->
+    <!-- Fav and touch icons -->
+	
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../../assets/js/html5shiv.js"></script>
+      <script src="../../assets/js/respond.min.js"></script>
+    <![endif]-->
+
+
+  </head>
+<!-- NAVBAR
+================================================== -->
+  <body>
+   <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+	<div class="container">
+	  <!-- Brand and toggle get grouped for better mobile display -->
+	  <div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+		  <span class="sr-only">Toggle navigation</span>
+		  <span class="icon-bar"></span>
+		  <span class="icon-bar"></span>
+		  <span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="#">YOURSITE.COM</a>
+	  </div>
+
+	  <!-- Collect the nav links, forms, and other content for toggling -->
+	  <div class="collapse navbar-collapse navbar-ex1-collapse">
+		<ul class="nav navbar-nav">
+		   <li><a href="#">Link 1</a></li>
+		  <li><a href="#">Link 2</a></li>
+		  <li class="dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+			<ul class="dropdown-menu">
+			  <li><a href="#">Action</a></li>
+			  <li><a href="#">Another action</a></li>
+			  <li><a href="#">Something else here</a></li>
+			  <li><a href="#">Separated link</a></li>
+			  <li><a href="#">One more separated link</a></li>
+			</ul>
+		  </li>
+		   <li class="dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-reorder"></i></a>
+			<ul class="dropdown-menu">
+			  <li><a href="#">Action</a></li>
+			  <li><a href="#">Another action</a></li>
+			  <li><a href="#">Something else here</a></li>
+			  <li><a href="#">Separated link</a></li>
+			  <li><a href="#">One more separated link</a></li>
+			</ul>
+		  </li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+		<li class="dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-share"></i></a>
+			<ul class="dropdown-menu" style="min-width:40px;">
+			  <li><a href="#" title=""><i class="icon-twitter"></i></a></li>
+			<li><a href="#" title=""><i class="icon-facebook"></i></a></li>
+			<li><a href="#" title=""><i class="icon-google-plus"></i></a></li>
+			<li><a href="#" title=""><i class="icon-youtube"></i></a></li>	
+			<li><a href="#" title=""><i class="icon-dribbble"></i></a></li>
+			</ul>
+		  </li>
+			<li><a href="#" title=""><i class="icon-twitter"></i></a></li>
+			<li><a href="#" title=""><i class="icon-facebook"></i></a></li>
+			<li><a href="#" title=""><i class="icon-google-plus"></i></a></li>
+			<li><a href="#" title=""><i class="icon-youtube"></i></a></li>	
+			<li><a href="#" title=""><i class="icon-dribbble"></i></a></li>
+			
+		</ul>
+		
+	</div><!-- /.navbar-collapse --> 
+	</div>
+</nav>
+
+
+	<!-- Main row .container -->
+	<div class="container">
+	
+	<!-- breadcrumbs-->	
+	<div class="row">
+		<div class="col-xs-9 col-sm-9 col-md9 col-lg-9">
+			<ol class="breadcrumb">
+			  <li><a href="#">Home</a></li>
+			  <li><a href="#">Category</a></li>
+			  <li class="active">Single item Data</li>
+			</ol>
+		</div>
+		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 text-right">
+			<a class="btn btn-lg btn-block btn-warning" href="" title="">BOOK NOW</a>
+		</div>
+	
+	</div>
+	<!-- /breadcrumbs-->	
+
+	<div class="row">
+		<!-- Left side wrapper col  -->
+		<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+		<a class="" href="#"><i class="icon-angle-left"></i> <strong>Back to search results</strong></a>
+		<hr class="hr-sm">
+			<div class="panel panel-warning">
+				<div class="panel-heading">
+					<h4>Your searches</h4>
+				</div>
+				<div class="panel-body">
+	
+					<ul class="list-unstyled">
+						<li><a href="#" title="">Amsterdam <small>(Sept 10 - Sept 17)</small></a><li>
+					</ul>
+				</div>
+				<div class="panel-footer">
+					<a class="btn btn-block btn-sm btn-info">Change search</a>
+				</div>
+			</div>
+
+				<div class="panel panel-primary">
+				
+					<div class="panel-body">
+									
+					<h4>Related objects</h4>
+					<hr class="hr-sm">
+				
+					<!-- RELATED ITEM -->
+					<div class="alert" style="position:relative">	
+						<a class="close" data-dismiss="alert" href="#" aria-hidden="true" style="position:absolute; top:0px; right:0px;">&times;</a>
+						<div class="row">
+							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+								<div class="thumbnail"><img class="img-responsive" src="images/london2.jpg" alt="" ></div>
+							</div>
+							<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+								<a href="#" title="">Object title goes here</a>
+							</div>
+						</div>
+					</div>
+					<!-- RELATED ITEM -->
+					
+					<!-- RELATED ITEM -->
+					<div class="alert" style="position:relative">	
+						<a class="close" data-dismiss="alert" href="#" aria-hidden="true" style="position:absolute; top:0px; right:0px;">&times;</a>
+						<div class="row">
+							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+								<div class="thumbnail"><img class="img-responsive" src="images/london2.jpg" alt="" ></div>
+							</div>
+							<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+								<a href="#" title="">Object title goes here</a>
+							</div>
+						</div>
+					</div>
+					<!-- RELATED ITEM -->
+					
+					<!-- RELATED ITEM -->
+					<div class="alert" style="position:relative">	
+						<a class="close" data-dismiss="alert" href="#" aria-hidden="true" style="position:absolute; top:0px; right:0px;">&times;</a>
+						<div class="row">
+							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+								<div class="thumbnail"><img class="img-responsive" src="images/london2.jpg" alt="" ></div>
+							</div>
+							<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+								<a href="#" title="">Object title goes here</a>
+							</div>
+						</div>
+					</div>
+					<!-- RELATED ITEM -->
+					
+					<!-- RELATED ITEM -->
+					<div class="alert" style="position:relative">	
+						<a class="close" data-dismiss="alert" href="#" aria-hidden="true" style="position:absolute; top:0px; right:0px;">&times;</a>
+						<div class="row">
+							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+								<div class="thumbnail"><img class="img-responsive" src="images/london2.jpg" alt="" ></div>
+							</div>
+							<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+								<a href="#" title="">Object title goes here</a>
+							</div>
+						</div>
+					</div>
+					<!-- RELATED ITEM -->
+						
+					</div>
+				</div>
+			</div><!-- / left side -->
+
+		
+	
+		<!-- Right side wrapper col-->
+		<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9" >
+			<div class="row">
+				<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8" >
+					<h2>Title hostel name long header test</h2>
+					<small>Object adress long adress test Object adress long adress test Object adress long adress test </small>
+					
+				</div>
+				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-right">
+					<a  class="btn btn-info btn-block btn-lg toggler" href="#" style="margin:30px 0px 10px 0px;"> <i class="icon-map-marker"></i> Show map </a> <a  class="btn btn-info btn-lg btn-block toggler-hide" href="#" style="margin:30px 0px 10px 0px;"><i class="icon-map-marker"></i> Hide map </a>
+				</div>
+				
+			</div>
+			
+				<hr class="hr-sm">
+			
+				<div class="block-wrapper">
+				<!-- SLIDER -->
+		
+					 <div class="flexslider">
+					  <ul class="slides">
+							<li data-thumb="images/london2.jpg">
+							<img src="images/london2.jpg" />
+							</li>
+							<li data-thumb="images/london3.jpg">
+							<img src="images/london3.jpg" />
+							</li>
+							<li data-thumb="images/italy2.jpg">
+							<img src="images/italy2.jpg" />
+							</li>
+							<li data-thumb="images/london2.jpg">
+							<img src="images/london2.jpg" />
+							</li>
+							<li data-thumb="images/london2.jpg">
+							<img src="images/london2.jpg" />
+							</li>
+							<li data-thumb="images/london3.jpg">
+							<img src="images/london3.jpg" />
+							</li>
+							<li data-thumb="images/italy2.jpg">
+							<img src="images/italy2.jpg" />
+							</li>
+							<li data-thumb="images/london2.jpg">
+							<img src="images/london2.jpg" />
+							</li>
+							<li data-thumb="images/london2.jpg">
+							<img src="images/london2.jpg" />
+							</li>
+							<li data-thumb="images/london3.jpg">
+							<img src="images/london3.jpg" />
+							</li>
+							<li data-thumb="images/london2.jpg">
+							<img src="images/london2.jpg" />
+							</li>
+							<li data-thumb="images/london2.jpg">
+							<img src="images/london2.jpg" />
+							</li>
+							<li data-thumb="images/london3.jpg">
+							<img src="images/london3.jpg" />
+							</li>
+							
+							
+					  </ul>
+					</div>
+	
+				<!-- /SLIDER -->
+		
+				
+					
+				<!-- GMAP-->
+					
+						<div id="map" class="gmappanel hide-map"></div>
+				
+				<!-- GMAP-->
+			</div>
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						<p>Object description goes here Object description goes here Object description goes here Object description goes here Object description goes here Object description goes here Object description goes here Object description goes here Object description goes here Object description goes here Object description goes here Object description goes here Object description goes here Object description goes here Object description goes here Object description goes here Object description goes here Object description goes here Object description goes here </p>
+						<hr>
+						
+						<!-- DESCRIPTION TABS-->
+						<ul id="myTab" class="nav nav-tabs">
+							<li class="active"><a href="#home" data-toggle="tab">Home</a></li>
+							<li><a href="#profile" data-toggle="tab">Profile</a></li>
+							<li class="dropdown">
+							  <a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+							  <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
+								<li><a href="#dropdown1" tabindex="-1" data-toggle="tab">@fat</a></li>
+								<li><a href="#dropdown2" tabindex="-1" data-toggle="tab">@mdo</a></li>
+							  </ul>
+							</li>
+						  </ul>
+						  
+						  <div id="myTabContent" class="tab-content">
+							<div class="tab-pane fade in active" id="home">
+							 <table class="table table-hover">
+							<thead>
+							<tr>
+								<th>#</th>
+								<th>First Name</th>
+								<th>Tables</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<td>1</td>
+								<td>Michael</td>
+								<td>Are formatted like this</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>Lucille</td>
+								<td>Do you like them?</td>
+							</tr>
+							<tr class="success">
+								<td>3</td>
+								<td>Success</td>
+								<td></td>
+							</tr>
+							<tr class="danger">
+								<td>4</td>
+								<td>Danger</td>
+								<td></td>
+							</tr>
+							<tr class="warning">
+								<td>5</td>
+								<td>Warning</td>
+								<td></td>
+							</tr>
+							<tr class="active">
+								<td>6</td>
+								<td>Active</td>
+								<td></td>
+							</tr>
+							</tbody>
+						</table>
+							</div>
+							<div class="tab-pane fade" id="profile">
+							  <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+							</div>
+							<div class="tab-pane fade" id="dropdown1">
+							  <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+							</div>
+							<div class="tab-pane fade" id="dropdown2">
+							  <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
+							</div>
+						  </div>
+						<!-- / DESCRIPTION TABS-->
+					</div>
+				</div>
+		</div>
+		<!-- /Right side wrapper col-->
+	</div>
+	<!-- / .row -->
+</div>
+<!-- /.container-->
+
+
+<div class="container">
+	<div class="row">
+		<div class="panel panel-primary">
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 text-center">
+						<p class="lead ">
+							<i class="icon-gift text-info"></i> Subscribe to newsletter and get special offers to you email every week!
+						</p>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 text-center">
+						<form class="form-inline" role="form">
+							<div class="form-group">
+								<label class="sr-only" for="exampleInputEmail2">Email address</label>
+								<input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter email">
+							</div>
+							  <button type="submit" class="btn btn-info">Sign in</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		<hr>
+     
+      <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 text-center">
+         <i class="icon-building icon-4x text-info"></i>
+          <h4>Hotels</h4>
+		  <p>Search more than 300'000 hotels around the World</p>
+          <p><a class="btn btn-info" href="#">All hotels  &raquo;</a></p>
+        </div><!-- /.col-lg-3 -->
+		
+		<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 text-center">
+         <i class="icon-group icon-4x text-info"></i>
+          <h4>Hostels</h4>
+		  <p>Search more than 300'000 hostels around the World</p>
+          <p><a class="btn btn-info" href="#">All hotels  &raquo;</a></p>
+        </div><!-- /.col-lg-3 -->
+		
+		<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 text-center">
+         <i class="icon-ticket icon-4x text-info"></i>
+          <h4>Tickets</h4>
+		  <p>Search more than 300'000 hostels around the World</p>
+          <p><a class="btn btn-info" href="#">Buy tickets  &raquo;</a></p>
+        </div><!-- /.col-lg-3 -->
+		
+		
+		
+		<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 text-center">
+         <i class="icon-sun icon-4x text-info"></i>
+          <h4>Resorts</h4>
+		  <p>Search more than 300'000 resorts around the World</p>
+          <p><a class="btn btn-info" href="#">All resorts  &raquo;</a></p>
+        </div><!-- /.col-lg-3 -->
+        
+        
+		
+      </div><!-- /.row -->
+	<hr>
+		<div class="row margin-top-10">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+										<ul class="list-inline text-sm">
+												<li><a href="#" title="">Aaland Islands</a></li>
+												<li><a href="#" title="">Afghanistan</a></li>
+												<li><a href="#" title="">Albania</a></li>
+												<li><a href="#" title="">Algeria</a></li>
+												<li><a href="#" title="">American Samoa</a></li>
+												<li><a href="#" title="">Andorra</a></li>
+												<li><a href="#" title="">Angola</a></li>
+												<li><a href="#" title="">Anguilla</a></li>
+												<li><a href="#" title="">Antarctica</a></li>
+												<li><a href="#" title="">Antigua and Barbuda</a></li>
+												<li><a href="#" title="">Argentina</a></li>
+												<li><a href="#" title="">Armenia</a></li>
+												<li><a href="#" title="">Aruba</a></li>
+												<li><a href="#" title="">Australia</a></li>
+												<li><a href="#" title="">Austria</a></li>
+												<li><a href="#" title="">Azerbaijan</a></li>
+												<li><a href="#" title="">Bahamas</a></li>
+												<li><a href="#" title="">Bahrain</a></li>
+												<li><a href="#" title="">Bangladesh</a></li>
+												<li><a href="#" title="">Barbados</a></li>
+												<li><a href="#" title="">Belarus</a></li>
+												<li><a href="#" title="">Belgium</a></li>
+												<li><a href="#" title="">Belize</a></li>
+												<li><a href="#" title="">Benin</a></li>
+												<li><a href="#" title="">Bermuda</a></li>
+												<li><a href="#" title="">Bhutan</a></li>
+												<li><a href="#" title="">Bolivia</a></li>
+												<li><a href="#" title="">Bonaire, Sint Eustatius and Saba</a></li>
+												<li><a href="#" title="">Bosnia and Herzegovina</a></li>
+												<li><a href="#" title="">Botswana</a></li>
+												<li><a href="#" title="">Bouvet Island</a></li>
+												<li><a href="#" title="">Brazil</a></li>
+												<li><a href="#" title="">British Indian Ocean Territory</a></li>
+												<li><a href="#" title="">Brunei Darussalam</a></li>
+												<li><a href="#" title="">Bulgaria</a></li>
+												<li><a href="#" title="">Burkina Faso</a></li>
+												<li><a href="#" title="">Burundi</a></li>
+												<li><a href="#" title="">Cambodia</a></li>
+												<li><a href="#" title="">Cameroon</a></li>
+												<li><a href="#" title="">Canada</a></li>
+												<li><a href="#" title="">Canary Islands</a></li>
+												<li><a href="#" title="">Cape Verde</a></li>
+												<li><a href="#" title="">Cayman Islands</a></li>
+												<li><a href="#" title="">Central African Republic</a></li>
+												<li><a href="#" title="">Chad</a></li>
+												<li><a href="#" title="">Chile</a></li>
+												<li><a href="#" title="">China</a></li>
+												<li><a href="#" title="">Christmas Island</a></li>
+												<li><a href="#" title="">Cocos (Keeling) Islands</a></li>
+												<li><a href="#" title="">Colombia</a></li>
+												<li><a href="#" title="">Comoros</a></li>
+												<li><a href="#" title="">Congo</a></li>
+												<li><a href="#" title="">Cook Islands</a></li>
+												<li><a href="#" title="">Costa Rica</a></li>
+												<li><a href="#" title="">Cote D'Ivoire</a></li>
+												<li><a href="#" title="">Croatia</a></li>
+												<li><a href="#" title="">Cuba</a></li>
+												<li><a href="#" title="">Curacao</a></li>
+												<li><a href="#" title="">Cyprus</a></li>
+												<li><a href="#" title="">Czech Republic</a></li>
+												<li><a href="#" title="">Democratic Republic of Congo</a></li>
+												<li><a href="#" title="">Denmark</a></li>
+												<li><a href="#" title="">Djibouti</a></li>
+												<li><a href="#" title="">Dominica</a></li>
+												
+											</ul>
+			</div>
+		</div>
+	<hr>
+
+
+      <!-- FOOTER -->
+      <footer>
+        <p class="pull-right"><a class="btn btn-sm btn-default" href="#">Back to top</a></p>
+        <p>&copy; 2013 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+      </footer>
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/holder.js"></script>
+	  <!-- Optional FlexSlider Additions -->
+	  <script src="assets/js/jquery.easing.js"></script>
+	  <script src="assets/js/jquery.mousewheel.js"></script>
+    <script src="assets/js/jquery.flexslider-min.js"></script>
+
+	
+	<!-- FLEXSLIDER INIT SCRIPT-->
+	 <script type="text/javascript">
+    $(window).load(function(){
+      $('.flexslider').flexslider({
+        animation: "fade",
+        controlNav: "thumbnails",
+        start: function(slider){
+          $('body').removeClass('loading');
+        }
+      });
+    });
+  </script>
+  
+  	<!-- gMap PLUGIN -->
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script src="assets/js/jquery.gmap.js"></script>
+	
+  <!-- INIT SCRIPT - show gMap onclick -->
+  <script>
+		
+$(document).ready(function(){
+
+$('.toggler').click(function(){
+jQuery('.gmappanel').removeClass('hide-map').addClass('show-map').css('height', '600');
+$('.toggler').css('display', 'none');
+$('.toggler-hide').css('display', 'block');
+
+		var $map = $('#map');
+		google.maps.event.addDomListener(window, 'resize', function() {
+			map.setCenter(homeLatlng);
+		});
+		if( $map.length ) {
+
+			$map.gMap({
+				address: 'Amsterdam',
+				zoom: 14,
+				markers: [
+					{ 'address' : 'Amsterdam',}
+				]
+			});
+
+		}
+
+
+});
+$('.toggler-hide').click(function(){
+jQuery('.gmappanel').removeClass('show-map').addClass('hide-map').css('height', '0');
+$('.toggler').css('display', 'block');
+$('.toggler-hide').css('display', 'none');
+});
+});
+
+  </script>
+	
+  </body>
+</html>

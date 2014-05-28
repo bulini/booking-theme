@@ -1,0 +1,320 @@
+/*
+Theme Name: Bootstrap-Booking
+Theme URI: http://www.giuseppesurace.com
+Author: the WordPress team
+Author URI: http://wordpress.org/
+Description: In 2014, our default theme lets you create a responsive magazine website with a sleek, modern design. Feature your favorite homepage content in either a grid or a slider. Use the three widget areas to customize your website, and change your content's layout with a full-width page template and a contributor page to show off your authors. Creating a magazine website with WordPress has never been easier.
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: black, green, white, light, dark, two-columns, three-columns, left-sidebar, right-sidebar, fixed-layout, responsive-layout, custom-background, custom-header, custom-menu, editor-style, featured-images, flexible-header, full-width-template, microformats, post-formats, rtl-language-support, sticky-post, theme-options, translation-ready, accessibility-ready
+Text Domain: twentyfourteen
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+
+
+
+body{
+	padding-top:70px;
+}
+.margin-top-10{
+	margin-top:10px;
+}
+.gradient-bg{
+	
+	-webkit-box-shadow:  21px -14px 50px rgba(150, 150, 150, 0.05) inset;
+	-moz-box-shadow:     21px -14px 50px rgba(150, 150, 150, 0.05) inset;
+	box-shadow:          21px -14px 50px rgba(150, 150, 150, 0.05) inset;
+
+	border-left:2px solid #DEDEDE;
+	border-top:none;
+	border-left:none;
+	border-bottom:none;
+	border-width:2px;
+	-webkit-border-image: 
+		-webkit-gradient(linear, 0 100%, 0 0, from(rgba(0, 0, 0, .1)), to(rgba(0, 0, 0, 0))) 1 100%;
+	-webkit-border-image: 
+		-webkit-linear-gradient(bottom, rgba(0, 0, 0, .1), rgba(0, 0, 0, 0)) 1 100%;
+	-o-border-image:
+			 -o-linear-gradient(bottom, rgba(0, 0, 0, .1), rgba(0, 0, 0, 0)) 1 100%;
+	-moz-border-image:
+		   -moz-linear-gradient(bottom, rgba(0, 0, 0, .1), rgba(0, 0, 0, 0)) 1 100%; 
+}
+
+.hov-action-border{
+	border: 2px solid transparent;
+}
+.hov-action-border:hover{
+	border: 2px solid #ffde9f;
+}
+.frm-wrapper{
+	position:absolute; 
+	left:100px; 
+	top:120px; 
+	display:inline-block; 
+	min-width:40%; 
+	z-index:1020;
+}
+
+.carousel-caption{
+	bottom:auto;
+	top:100px;
+}
+
+/* carousel custom fade effect */
+.carousel.carousel-fade{
+	background:#124690;
+}
+.carousel-inner{
+	max-height:400px;
+}
+.carousel.carousel-fade .carousel-inner >.item {
+	-webkit-transition: opacity 0.7s ease-in-out;
+	-moz-transition: opacity 0.7s ease-in-out;
+	-ms-transition: opacity 0.7s ease-in-out;
+	-o-transition: opacity 0.7s ease-in-out;
+	transition: opacity 0.7s ease-in-out;
+	opacity:1;
+	position:absolute;
+	left: 0;
+	top:0;
+	right:0;
+	bottom:0;
+	z-index: 1;
+	display:block;
+}
+
+.carousel.carousel-fade .active.item {
+	opacity:1;
+	-webkit-transition: opacity 0.7s ease-in-out;
+	-moz-transition: opacity 0.7s ease-in-out;
+	-ms-transition: opacity 0.7s ease-in-out;
+	-o-transition: opacity 0.7s ease-in-out;
+	transition: opacity 0.7s ease-in-out;
+	z-index: 2;
+}
+
+.carousel.carousel-fade .active.left,
+.carousel.carousel-fade .active.right {
+-webkit-transition: opacity 0.7s ease-in-out;
+	-moz-transition: opacity 0.7s ease-in-out;
+	-ms-transition: opacity 0.7s ease-in-out;
+	-o-transition: opacity 0.7s ease-in-out;
+	transition: opacity 0.7s ease-in-out;
+	left: 0;
+	z-index: 2;
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+
+.carousel.carousel-fade .next,
+.carousel.carousel-fade .prev {
+	left: 0;
+	z-index: 1;
+}
+
+.carousel.carousel-fade .carousel-control {
+	z-index: 3;
+}
+
+.carousel-control .icon-prev, 
+.carousel-control .icon-next{
+	text-shadow: 2px 2px 3px rgba(0,0,0, .4);
+}
+/* effect-end*/
+
+/* helper classes*/
+.relative{
+position:relative;
+}
+
+@media (max-width:768px){
+.frm-wrapper{
+	position:absolute; 
+	left:10%;
+	right:20%;
+	top:100px; 
+	display:inline-block; 
+	width:80%; 
+	z-index:1020;
+}
+.carousel-inner{
+	min-height:500px;
+	max-width:768px;
+	overflow:hidden;
+}
+.carousel-inner > .item{
+	max-width:768px;
+}
+.carousel-inner > .item > img {
+	position: relative;
+	top: 0;
+	left: 0;
+	max-width:none;
+	width: auto;
+	height: 350px;
+	}
+.carousel-caption{
+	bottom:50px;
+	}
+
+}
+
+@media (min-width: 960px){
+.carousel-control .icon-prev, 
+.carousel-control .icon-next{
+	font-size:60px;
+}
+
+}
+
+.margin-top-10{
+	margin-top:10px;
+}
+.gradient-bg{
+	
+	-webkit-box-shadow:  21px -14px 50px rgba(150, 150, 150, 0.05) inset;
+	-moz-box-shadow:     21px -14px 50px rgba(150, 150, 150, 0.05) inset;
+	box-shadow:          21px -14px 50px rgba(150, 150, 150, 0.05) inset;
+
+	border-left:2px solid #DEDEDE;
+	border-top:none;
+	border-left:none;
+	border-bottom:none;
+	border-width:2px;
+	-webkit-border-image: 
+		-webkit-gradient(linear, 0 100%, 0 0, from(rgba(0, 0, 0, .1)), to(rgba(0, 0, 0, 0))) 1 100%;
+	-webkit-border-image: 
+		-webkit-linear-gradient(bottom, rgba(0, 0, 0, .1), rgba(0, 0, 0, 0)) 1 100%;
+	-o-border-image:
+			 -o-linear-gradient(bottom, rgba(0, 0, 0, .1), rgba(0, 0, 0, 0)) 1 100%;
+	-moz-border-image:
+		   -moz-linear-gradient(bottom, rgba(0, 0, 0, .1), rgba(0, 0, 0, 0)) 1 100%; 
+}
+
+.hov-action-border{
+	border: 2px solid transparent;
+}
+.hov-action-border:hover{
+	border: 2px solid #ffde9f;
+	background: #ffffff;
+}
+/* Remove standart style from .alert placed in .panel*/
+.panel .alert{
+	padding:0px;
+	-webkit-box-shadow:none;
+		-moz-box-shadow:none;
+			box-shadow:none;
+}
+
+
+.block-wrapper{
+	position:relative;
+	display:inline-block;
+	width:100%;
+	height:auto;
+}
+.map-wrapper{
+	position:absolute;
+	top:0px;
+	left:0px;
+	
+	display:inline-block;
+}
+/* gMap */
+ #map.gmappanel {
+width:100%;
+position:relative;
+height:0px;
+
+}
+#map.gmappanel.hide-map{
+height:0px;
+	z-index:1020;
+	position:absolute;
+	top:0px;
+	bottom:0px;
+	left:0px;
+}
+#map.gmappanel.show-map{
+	display:block;
+	z-index:1020;
+	position:absolute;
+	top:0px;
+	bottom:0px;
+	left:0px;
+	height:500px;
+	
+}
+.toggler-hide{
+display:none;
+}
+
+
+    .controls {
+margin-top: 16px;
+border: 1px solid transparent;
+border-radius: 2px 0 0 2px;
+box-sizing: border-box;
+-moz-box-sizing: border-box;
+height: 32px;
+outline: none;
+box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+#pac-input {
+background-color: #fff;
+padding: 0 11px 0 13px;
+width: 400px;
+font-family: Roboto;
+font-size: 15px;
+font-weight: 300;
+text-overflow: ellipsis;
+}
+
+#pac-input:focus {
+border-color: #4d90fe;
+margin-left: -1px;
+padding-left: 14px;  /* Regular padding-left + 1. */
+width: 401px;
+}
+
+.pac-container {
+font-family: Roboto;
+}
+
+#type-selector {
+color: #fff;
+background-color: #4d90fe;
+padding: 5px 11px 0px 11px;
+}
+
+#type-selector label {
+font-family: Roboto;
+font-size: 13px;
+font-weight: 300;
+}
+
+.caption_carousel{
+position: absolute;
+padding: 20px;
+top: 50px;
+right: 20px;
+max-width: 50%;
+background: rgba(0,0,0,0.6);
+color: #fff;
+
+-webkit-box-shadow: 0 3px 5px rgba(0,0,0,0.225);
+box-shadow: 0 3px 5px rgba(0,0,0,0.225);
+border: 1px solid rgba(0,0,0,0.2);
+}
+
+img.alignright {float:right; margin:0 0 1em 1em}
+img.alignleft {float:left; margin:0 1em 1em 0}
+img.aligncenter {display: block; margin-left: auto; margin-right: auto}
+.alignright {float:right; }
+.alignleft {float:left; }
+.aligncenter {display: block; margin-left: auto; margin-right: auto}
+
