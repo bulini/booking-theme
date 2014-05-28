@@ -1,5 +1,9 @@
 <?php get_header(); ?>
 
+<?php 
+$options=load_theme_options();
+?>
+
 	<!-- Main blog .container -->
 	<div class="container">
 		<div class="row">

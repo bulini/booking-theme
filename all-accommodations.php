@@ -5,37 +5,31 @@ Template Name: All accommodations
 
 get_header(); ?>
 
+<?php 
+$options=load_theme_options();
+?>
+
 	<!-- Main blog .container -->
 	<div class="container">
-		<div class="row">
-		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-			<ol class="breadcrumb">
-			  <li><a href="#">Lefkada</a></li>
-			  <li class="active">Tutti gli alloggi</li>
-			</ol>
-		</div>
-	
 
 	
-	<!-- Teasers right side wrapper col-->
+<!-- Teasers right side wrapper col-->
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
-			<!-- ADDS PANEL-->
+	<!-- ADDS PANEL-->
+				<div class="row margin-top-10 white">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+							<h1>Appartamenti <?php single_cat_title(); ?> <?php echo $options['city']; ?></h1>
+							<p>Invia una richiesta multipla a tutte le strutture presenti su questa pagina, specifica le tue esigenze, se &egrave; una vacanza di gruppo, pi&ugrave; famiglie, bambini etc.</p>
+							<p class="text-center">
+								<a class="btn btn-lg btn-primary" data-toggle="modal" data-target="#myModal">Inviaci una richiesta informazioni multipla</a>									
+							</p>
 
-						<!-- / ADDS PANEL-->
+						</div>
+					</div>
 
-							<div class="row margin-top-10">
-								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-									<div class="panel panel-default">
-										<div class="panel-heading">
-											<h3>Appartamenti e ville <?php single_cat_title(); ?> Lefkada</h3>
-										</div>
-										<div class="panel-body">
-											<a class="btn btn-lg btn-block btn-warning" data-toggle="modal" data-target="#myModal">Richiedi informazioni</a>
-										</div>
-									</div>
-								</div>
-							</div>
 							<hr class="hr-sm">
+							
+							
 							<?php query_posts('post_type=accommodations&posts_per_page=-1'); ?>
 							
 					<!-- ITEM-->
@@ -45,7 +39,7 @@ get_header(); ?>
 							
 							<!-- COUNTRY ITEM-->
 							<div class="row margin-top-10 hov-action-border">
-								<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+								<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
 									<div class="thumbnail">
 								<!-- SLIDER -->
 		
@@ -64,7 +58,7 @@ get_header(); ?>
 										
 									</div>
 								</div>
-								<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+								<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
 									<h4><a href="<?php the_permalink(); ?>" title=""><?php the_title(); ?></a></h4>
 									
 										<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10" style="padding-left:0px;">
