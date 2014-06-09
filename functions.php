@@ -40,14 +40,30 @@ function myplugin_meta_box_callback( $post ) {
 	 * Use get_post_meta() to retrieve an existing value
 	 * from the database and use the value for the form.
 	 */
-	$value = get_post_meta( $post->ID, 'address', true );
-
+	$address = get_post_meta( $post->ID, 'address', true );
+	$lat = get_post_meta( $post->ID, 'lat', true );
+	$lng = get_post_meta( $post->ID, 'lng', true );
+	$formatted_address = get_post_meta( $post->ID, 'formatted_address', true );
 	echo '<label for="address">';
 	_e( 'Address', 'myplugin_textdomain' );
 	echo '</label>';
-	echo '<input type="text" id="geocomplete" name="address" value="' . esc_attr( $value ) . '" size="60" /><br />';
-	echo '<div class="map_canvas" style="height:400px;width:800px; margin: 10px 20px 10px 0; border:1px solid #ccc;"></div>';
+	echo '<input type="text" id="geocomplete" name="address" value="' . esc_attr( $address ) . '" size="60" /><br />';
+    echo '  <fieldset>											   ';
+    echo '    <label>Latitude</label>							   ';
+    echo '    <input name="lat" type="text" value="' . esc_attr( $lat ) . '">			   ';
+    echo '  													   ';
+    echo '    <label>Longitude</label>							   ';
+    echo '    <input name="lng" type="text" value="' . esc_attr( $lng ) . '">			   ';
+    echo '  													   ';
+    echo '    <label>Formatted Address</label>					   ';
+    echo '    <input name="formatted_address" type="text" value="' . esc_attr( $formatted_address ) . '">';
+    echo '  </fieldset>';
 
+
+
+
+	echo '<div class="map_canvas" style="height:400px;width:800px; margin: 10px 20px 10px 0; border:1px solid #ccc;"></div>';
+	
 }
 
 
@@ -100,10 +116,17 @@ function address_save( $post_id ) {
 	}
 
 	// Sanitize user input.
-	$my_data = sanitize_text_field( $_POST['address'] );
+	$address = sanitize_text_field( $_POST['address'] );
+	$lat = sanitize_text_field( $_POST['lat'] );
+	$lng = sanitize_text_field( $_POST['lng'] );
+	$formatted_address = sanitize_text_field( $_POST['formatted_address'] );
 
 	// Update the meta field in the database.
-	update_post_meta( $post_id, 'address', $my_data );
+	update_post_meta( $post_id, 'address', $address );
+	update_post_meta( $post_id, 'lat', $lat );
+	update_post_meta( $post_id, 'lng', $lng );
+	update_post_meta( $post_id, 'formatted_address', $formatted_address );
+
 }
 add_action( 'save_post', 'address_save' );
 

@@ -1,27 +1,26 @@
-  jQuery(function(){
-    
-    var options = {
-      map: ".map_canvas"
-    };
-    
-    jQuery("#geocomplete").geocomplete(options)
-      .bind("geocode:result", function(event, result){
-        jQuery.log("Result: " + result.formatted_address);
-      })
-      .bind("geocode:error", function(event, status){
-        jQuery.log("ERROR: " + status);
-      })
-      .bind("geocode:multiple", function(event, results){
-        jQuery.log("Multiple: " + results.length + " results found");
+      jQuery(function(){
+        jQuery("#geocomplete").geocomplete({
+          map: ".map_canvas",
+          details: "form ",
+          markerOptions: {
+            draggable: true
+          }
+        });
+        
+        jQuery("#geocomplete").bind("geocode:dragged", function(event, latLng){
+          jQuery("input[name=lat]").val(latLng.lat());
+          jQuery("input[name=lng]").val(latLng.lng());
+          jQuery("#reset").show();
+        });
+        
+        
+        jQuery("#reset").click(function(){
+          jQuery("#geocomplete").geocomplete("resetMarker");
+          jQuery("#reset").hide();
+          return false;
+        });
+        
+        jQuery("#find").click(function(){
+          jQuery("#geocomplete").trigger("geocode");
+        }).click();
       });
-    
-    jQuery("#find").click(function(){
-      jQuery("#geocomplete").trigger("geocode");
-    });
-    
-    jQuery("#examples a").click(function(){
-      jQuery("#geocomplete").val(jQuery(this).text()).trigger("geocode");
-      return false;
-    });
-    
-  });
