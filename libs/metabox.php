@@ -71,7 +71,7 @@ add_filter( 'cmb_meta_boxes', 'cmb_sample_metaboxes' );
 function cmb_sample_metaboxes( array $meta_boxes ) {
 
 	// Start with an underscore to hide fields from custom fields list
-	$prefix = '_cmb_';
+	$prefix = '';
 
 	/**
 	 * Sample metabox to demonstrate each field type included
@@ -79,16 +79,16 @@ function cmb_sample_metaboxes( array $meta_boxes ) {
 	$meta_boxes['test_metabox'] = array(
 		'id'         => 'test_metabox',
 		'title'      => __( 'Test Metabox', 'cmb' ),
-		'pages'      => array( 'page', ), // Post type
+		'pages'      => array( 'accommodations', ), // Post type
 		'context'    => 'normal',
 		'priority'   => 'high',
 		'show_names' => true, // Show field names on the left
 		// 'cmb_styles' => true, // Enqueue the CMB stylesheet on the frontend
 		'fields'     => array(
 			array(
-				'name'       => __( 'Test Text', 'cmb' ),
+				'name'       => __( 'Address', 'cmb' ),
 				'desc'       => __( 'field description (optional)', 'cmb' ),
-				'id'         => $prefix . 'test_text',
+				'id'         => $prefix . 'geocomplete',
 				'type'       => 'text',
 				'show_on_cb' => 'cmb_test_text_show_on_cb', // function should return a bool value
 				// 'sanitization_cb' => 'my_custom_sanitization', // custom sanitization callback parameter
@@ -96,6 +96,9 @@ function cmb_sample_metaboxes( array $meta_boxes ) {
 				// 'on_front'        => false, // Optionally designate a field to wp-admin only
 				// 'repeatable'      => true,
 			),
+			
+			/*
+
 			array(
 				'name' => __( 'Test Text Small', 'cmb' ),
 				'desc' => __( 'field description (optional)', 'cmb' ),
@@ -303,9 +306,12 @@ function cmb_sample_metaboxes( array $meta_boxes ) {
 				'desc' => __( 'Enter a youtube, twitter, or instagram URL. Supports services listed at <a href="http://codex.wordpress.org/Embeds">http://codex.wordpress.org/Embeds</a>.', 'cmb' ),
 				'id'   => $prefix . 'test_embed',
 				'type' => 'oembed',
-			),
+			),*/
 		),
+		
 	);
+	
+	
 
 	/**
 	 * Metabox to be displayed on a single page ID

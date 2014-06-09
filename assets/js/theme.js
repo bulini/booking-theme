@@ -16,7 +16,8 @@ jQuery(document).ready(function(){
 	jQuery('.toggler').css('display', 'none');
 	
 	jQuery('.toggler-hide').css('display', 'block');
-	
+	address_field = jQuery('#map').attr("data-address");
+	//alert(address_field);
 			var jQuerymap = jQuery('#map');
 			google.maps.event.addDomListener(window, 'resize', function() {
 				map.setCenter(homeLatlng);
@@ -24,10 +25,10 @@ jQuery(document).ready(function(){
 			if( jQuerymap.length ) {
 	
 				jQuerymap.gMap({
-					address: 'Amsterdam',
+					address: address_field,
 					zoom: 14,
 					markers: [
-						{ 'address' : 'Amsterdam',}
+						{ 'address' : address_field}
 					]
 				});
 	

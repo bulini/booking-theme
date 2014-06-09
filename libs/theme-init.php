@@ -313,6 +313,7 @@ if ( !function_exists('fb_AddThumbColumn') && function_exists('add_theme_support
 		wp_enqueue_script( 'mousewheel', get_template_directory_uri() . '/assets/js/jquery.mousewheel.js', array(), '1.0.0', true );
 		wp_enqueue_script( 'flexslider', get_template_directory_uri() . '/assets/js/jquery.flexslider-min.js', array(), '1.0.0', true );
 		wp_enqueue_script( 'gmaps', get_template_directory_uri() . '/assets/js/jquery.gmap.js', array(), '1.0.0', true );
+
 		wp_enqueue_script( 'custom', get_template_directory_uri() . '/assets/js/theme.js', array(), '1.0.0', true );
 		//wp_enqueue_script( 'tagsinput', get_template_directory_uri() . '/js/jquery.tagsinput.js', array(), '1.0.0', true );
 		//wp_enqueue_script( 'ekko-lightbox', get_template_directory_uri() . '/js/ekko-lightbox.js', array(), '1.0.0', true );
@@ -321,6 +322,18 @@ if ( !function_exists('fb_AddThumbColumn') && function_exists('add_theme_support
 
 
 	add_action( 'wp_enqueue_scripts', 'theme_setup' );
+
+
+// Register Script
+function custom_scripts() {
+	wp_enqueue_script( 'googlemaps', 'http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places', array(), '1.0.0', true );
+	wp_enqueue_script( 'geocomplete', get_template_directory_uri() . '/assets/js/jquery.geocomplete.min.js', array(), '1.0.0', true );
+	wp_enqueue_script( 'admin', get_template_directory_uri() . '/assets/js/admin.js', array(), '1.0.0', true );
+
+}
+
+// Hook into the 'wp_enqueue_scripts' action
+add_action( 'admin_enqueue_scripts', 'custom_scripts' );
 
 
 /**
