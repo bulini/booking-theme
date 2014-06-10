@@ -116,7 +116,7 @@
 					
 				<!-- GMAP-->
 					
-				<div id="map" class="gmappanel hide-map" data-address="<?php echo get_post_meta($post->ID,'address',true); ?>"></div>
+				<div id="map" class="gmappanel hide-map" data-address="<?php echo get_post_meta($post->ID,'address',true); ?>" data-lat="<?php echo get_post_meta($post->ID,'lat',true); ?>" data-lng="<?php echo get_post_meta($post->ID,'lng',true); ?>"></div>
 
 			</div>
 			

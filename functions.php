@@ -44,26 +44,28 @@ function myplugin_meta_box_callback( $post ) {
 	$lat = get_post_meta( $post->ID, 'lat', true );
 	$lng = get_post_meta( $post->ID, 'lng', true );
 	$formatted_address = get_post_meta( $post->ID, 'formatted_address', true );
-	echo '<label for="address">';
-	_e( 'Address', 'myplugin_textdomain' );
-	echo '</label>';
-	echo '<input type="text" id="geocomplete" name="address" value="' . esc_attr( $address ) . '" size="60" /><br />';
-    echo '  <fieldset>											   ';
-    echo '    <label>Latitude</label>							   ';
-    echo '    <input name="lat" type="text" value="' . esc_attr( $lat ) . '">			   ';
-    echo '  													   ';
-    echo '    <label>Longitude</label>							   ';
-    echo '    <input name="lng" type="text" value="' . esc_attr( $lng ) . '">			   ';
-    echo '  													   ';
-    echo '    <label>Formatted Address</label>					   ';
-    echo '    <input name="formatted_address" type="text" value="' . esc_attr( $formatted_address ) . '">';
-    echo '  </fieldset>';
+	$html= '<label for="address">';
+	$html.=_e( 'Address', 'myplugin_textdomain' );
+	$html.= '</label>';
+	$html.= '<input type="text" id="geocomplete" name="address" value="' . esc_attr( $address ) . '" size="60" /><br />';
+    $html.= '  <fieldset>											   ';
+    $html.= '    <label>Latitude</label>							   ';
+    $html.= '    <input name="lat" type="text" value="' . esc_attr( $lat ) . '">			   ';
+    $html.= '  													   ';
+    $html.= '    <label>Longitude</label>							   ';
+    $html.= '    <input name="lng" type="text" value="' . esc_attr( $lng ) . '">			   ';
+    $html.= '  													   ';
+    $html.= '    <label>Formatted Address</label>					   ';
+    $html.= '    <input name="formatted_address" type="text" value="' . esc_attr( $formatted_address ) . '">';
+    $html.= '  </fieldset>';
 
 
 
 
-	echo '<div class="map_canvas" style="height:400px;width:800px; margin: 10px 20px 10px 0; border:1px solid #ccc;"></div>';
-	
+
+	$html.= '<div class="map_canvas" style="height:400px;width:800px; margin: 10px 20px 10px 0; border:1px solid #ccc;"></div>';
+	$html.='<a id="reset" href="#" style="display:none;">Reset Marker</a>';
+	echo $html;
 }
 
 

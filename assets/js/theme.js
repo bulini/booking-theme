@@ -17,6 +17,9 @@ jQuery(document).ready(function(){
 	
 	jQuery('.toggler-hide').css('display', 'block');
 	address_field = jQuery('#map').attr("data-address");
+	lat_field = jQuery('#map').attr("data-lat");
+	lng_field = jQuery('#map').attr("data-lng");
+
 	//alert(address_field);
 			var jQuerymap = jQuery('#map');
 			google.maps.event.addDomListener(window, 'resize', function() {
@@ -28,7 +31,7 @@ jQuery(document).ready(function(){
 					address: address_field,
 					zoom: 14,
 					markers: [
-						{ 'address' : address_field}
+						{ 'latitude': lat_field, 'longitude': lng_field, 'html': '<h5>'+address_field+'</h5>'}
 					]
 				});
 	
